@@ -1,0 +1,18 @@
+/*
+ * io_controller_cla.cla
+ *
+ *  Created on: Jan 12, 2018
+ *      Author: adam jones
+ */
+
+
+#include "io_controller_cla.h"
+
+__interrupt void cla_task2_cla_uptime(void) {
+    cla_uptime_count_32++;
+
+    //catch overflow
+    if (cla_uptime_count_32 == 0) {
+        cla_uptime_overflow++;
+    }
+}

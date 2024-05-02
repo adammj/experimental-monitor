@@ -1,0 +1,68 @@
+/*
+ * ADS8688_adc_cla.cla
+ *
+ *  Created on: May 23, 2017
+ *      Author: adam jones
+ */
+
+#include "ADS8688_adc_cla.h"
+#include "analog_input_cla.h"
+
+void cla_read_ADS8688_adc_voltages(void);
+
+__interrupt void cla_task4_read_ADS8688_adc_voltages(void) {
+    uint16_t channel;
+    uint16_t ain_num;
+    volatile uint16_t voltage;
+    bool has_at_least_one_nonzero = false;
+
+    cla_tic();
+
+    if (!cla_ADS8688_adc_enabled) {
+        cla_ADS8688_cycle_count = cla_toc();
+        return;
+    }
+
+    //throw away anything in the buffer
+    while (cla_ADS8688_spi_regs->SPIFFRX.bit.RXFFST > 0) {
+        channel = cla_ADS8688_spi_regs->SPIRXBUF;
+    }
+
+    for (channel=0; channel<cla_analog_in_count; channel++) {
+        ain_num = cla_ads8688_channel_to_ain[channel];
+
+        //just send null (no command) for all but the last channel
+        //adding (short) as recommended to get around CLA bug with signed comparisons
+        if ((short)(channel) < (short)(cla_analog_in_count - 1)) {
+            cla_ADS8688_spi_regs->SPITXBUF = 0;
+        } else {
+            //on the last channel, send the AUTO_RST command (so it starts back at 0 next time)
+            cla_ADS8688_spi_regs->SPITXBUF = 0xA000;
+        }
+        cla_ADS8688_spi_regs->SPITXBUF = 0;
+
+        //wait until there are 2 in the queue
+        //NOTE: cannot suppress or fix the 30013-D warning for the next line
+        while (cla_ADS8688_spi_regs->SPIFFRX.bit.RXFFST < 2) {
+        }
+
+        //toss the first
+        voltage = cla_ADS8688_spi_regs->SPIRXBUF;
+
+        //grab the second
+        voltage = cla_ADS8688_spi_regs->SPIRXBUF;
+
+        if (voltage > 0) {
+            has_at_least_one_nonzero = true;
+        }
+
+        //store the voltage
+        cla_analog_in_voltages[ain_num] = voltage;
+    }
+
+    if (!has_at_least_one_nonzero) {
+        has_had_fatal_adc_error = true;
+    }
+
+    cla_ADS8688_cycle_count = cla_toc();
+}

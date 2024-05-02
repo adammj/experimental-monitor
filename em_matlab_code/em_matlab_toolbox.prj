@@ -1,0 +1,158 @@
+<deployment-project plugin="plugin.toolbox" plugin-version="1.0">
+  <configuration file="/Users/adam/Documents/Projects/Experimental Monitor/em_matlab_code/em_matlab_toolbox.prj" location="/Users/adam/Documents/Projects/Experimental Monitor/em_matlab_code" name="em_matlab_toolbox" target="target.toolbox" target-name="Package Toolbox">
+    <param.appname>Experimental Monitor</param.appname>
+    <param.authnamewatermark>Adam Jones</param.authnamewatermark>
+    <param.email>none@none.none</param.email>
+    <param.company />
+    <param.summary>Includes the core experimental_monitor code, as well as support functions.</param.summary>
+    <param.description />
+    <param.screenshot />
+    <param.version>1.14</param.version>
+    <param.output>${PROJECT_ROOT}/Experimental Monitor.mltbx</param.output>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.guid>31f61f0f-e982-42ff-9f9c-18955512017c</param.guid>
+    <param.exclude.filters>% List files contained in your toolbox folder that you would like to exclude
+% from packaging.  Excludes should be listed relative to the toolbox folder.
+% Some examples of how to specify excludes are provided below:
+%
+% A single file in the toolbox folder:
+% .svn
+.gitignore
+.DS_Store
+%
+% A single file in a subfolder of the toolbox folder:
+% example/.svn
+%
+% All files in a subfolder of the toolbox folder:
+% example/*
+.git/
+other/
+%
+% All files of a certain name in all subfolders of the toolbox folder:
+% **/.svn
+%
+% All files matching a pattern in all subfolders of the toolbox folder:
+% **/*.bak
+%</param.exclude.filters>
+    <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
+    <param.examples />
+    <param.demosxml />
+    <param.apps />
+    <param.registered.apps />
+    <param.docs />
+    <param.getting.started.guide />
+    <param.matlabpath.excludes />
+    <param.javaclasspath.excludes />
+    <param.exported.on.package>false</param.exported.on.package>
+    <param.release.start>R2017a</param.release.start>
+    <param.release.end>latest</param.release.end>
+    <param.release.current.only>false</param.release.current.only>
+    <param.compatiblity.windows>true</param.compatiblity.windows>
+    <param.compatiblity.macos>true</param.compatiblity.macos>
+    <param.compatiblity.linux>true</param.compatiblity.linux>
+    <param.compatiblity.matlabonline>false</param.compatiblity.matlabonline>
+    <unset>
+      <param.company />
+      <param.description />
+      <param.screenshot />
+      <param.output />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.exclude.pcodedmfiles />
+      <param.examples />
+      <param.demosxml />
+      <param.apps />
+      <param.registered.apps />
+      <param.docs />
+      <param.getting.started.guide />
+      <param.matlabpath.excludes />
+      <param.javaclasspath.excludes />
+      <param.exported.on.package />
+      <param.release.current.only />
+      <param.compatiblity.windows />
+      <param.compatiblity.macos />
+      <param.compatiblity.linux />
+    </unset>
+    <fileset.rootdir>
+      <file>/Users/adam/Documents/Projects/Experimental Monitor/em_matlab_code</file>
+    </fileset.rootdir>
+    <fileset.rootfiles>
+      <file>${PROJECT_ROOT}/@experimental_monitor</file>
+      <file>${PROJECT_ROOT}/support</file>
+    </fileset.rootfiles>
+    <fileset.depfun.included />
+    <fileset.depfun.excluded>
+      <file>/Applications/Psychtoolbox/PsychBasic/GetSecs.m</file>
+      <file>/Applications/Psychtoolbox/PsychBasic/GetSecs.mexmaci64</file>
+      <file>/Applications/Psychtoolbox/PsychBasic/Screen.m</file>
+      <file>/Applications/Psychtoolbox/PsychBasic/Screen.mexmaci64</file>
+      <file>/Applications/Psychtoolbox/PsychBasic/SetMouse.m</file>
+      <file>/Applications/Psychtoolbox/PsychBasic/ShowCursor.m</file>
+      <file>/Applications/Psychtoolbox/PsychFiles/PsychtoolboxConfigDir.m</file>
+      <file>/Applications/Psychtoolbox/PsychJava/PsychJavaSwingCleanup.m</file>
+      <file>/Applications/Psychtoolbox/PsychJava/psychusejava.m</file>
+      <file>/Applications/Psychtoolbox/PsychObsolete/IsWindows.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/BlackIndex.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/GrayIndex.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/IsLinux.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/IsOSX.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/IsOctave.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/IsWayland.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/IsWin.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/PsychNumel.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/RestoreCluts.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/WhiteIndex.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/sca.m</file>
+      <file>/Applications/Psychtoolbox/PsychOneliners/streq.m</file>
+      <file>/Applications/Psychtoolbox/PsychRects/CenterRectOnPoint.m</file>
+      <file>/Applications/Psychtoolbox/PsychRects/OffsetRect.m</file>
+      <file>/Applications/Psychtoolbox/PsychRects/RectBottom.m</file>
+      <file>/Applications/Psychtoolbox/PsychRects/RectCenter.m</file>
+      <file>/Applications/Psychtoolbox/PsychRects/RectLeft.m</file>
+      <file>/Applications/Psychtoolbox/PsychRects/RectRight.m</file>
+      <file>/Applications/Psychtoolbox/PsychRects/RectTop.m</file>
+    </fileset.depfun.excluded>
+    <fileset.package />
+    <build-deliverables>
+      <file location="/Users/adam/Documents/Projects/Experimental Monitor/em_matlab_code" name="Experimental Monitor.mltbx" optional="false">/Users/adam/Documents/Projects/Experimental Monitor/em_matlab_code/Experimental Monitor.mltbx</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>/Applications/MATLAB_R2018a.app</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="polyspacebugfinder" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <polyspacebugfinder>
+          <enabled>true</enabled>
+        </polyspacebugfinder>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>true</unix>
+      <mac>true</mac>
+      <windows>false</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.13.6</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>maci64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>

@@ -1,0 +1,28 @@
+/*
+ * tic_toc_cla.cla
+ *
+ *  Created on: Apr 19, 2017
+ *      Author: adam jones
+ */
+
+
+#include "tic_toc_cla.h"
+
+//reset the clocks
+void cla_tic(void) {
+    __meallow();
+    CLA_EPWM.TBCTL.bit.CTRMODE = TB_FREEZE;
+    CLA_EPWM.TBCTR = 0;
+    CLA_EPWM.TBCTL.bit.CTRMODE = TB_COUNT_UP;
+    __medis();
+}
+
+//read in cycles
+uint16_t cla_toc(void) {
+    uint16_t cycles;
+    __meallow();
+    CLA_EPWM.TBCTL.bit.CTRMODE = TB_FREEZE;
+    cycles = CLA_EPWM.TBCTR;
+    __medis();
+    return cycles;
+}

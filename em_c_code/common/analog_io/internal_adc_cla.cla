@@ -1,0 +1,39 @@
+/*
+ * internal_adc_cla.cla
+ *
+ *  Created on: Apr 10, 2017
+ *      Author: adam
+ */
+
+#include "internal_adc_cla.h"
+#include "analog_input_cla.h"
+
+
+__interrupt void cla_task3_process_analog_io(void) {
+    float voltage;
+    int16_t ain_num;    //in cla it must be defined ahead of time
+
+    cla_tic();
+
+    if (!cla_internal_adc_enabled) {
+        cla_internal_adc_cycle_count = cla_toc();
+        return;
+    }
+
+    //copy the result values
+    for (ain_num = 0; ain_num<cla_analog_in_count; ain_num++) {
+        //copy current result
+        voltage = *cla_ain_result_ptrs[ain_num].ptr;
+
+        //convert the 12bit number to the common 16bit range
+        voltage = voltage*cla_internal_adc_conversion_scale + cla_internal_adc_conversion_offset;
+
+        //store current and history
+        cla_analog_in_voltages[ain_num] = voltage;
+    }
+
+    //clear ADC interrupt flag (used to trigger the task)
+    AdcbRegs.ADCINTFLGCLR.bit.ADCINT1 = 1;
+
+    cla_internal_adc_cycle_count = cla_toc();
+}
