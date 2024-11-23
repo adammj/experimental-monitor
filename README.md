@@ -16,6 +16,8 @@ Functionality:
 - High-speed output to either a Plexon or Blackrock DSP (for annotating experiment)
 
 
+![Daughterboards](hardware.jpeg?raw=true)
+
 ---
 
 The full git history is not included, because it seemed like more effort than it was worth to sanitize my personal email across all of the branches as well rebasing to include the license from the beginning.
